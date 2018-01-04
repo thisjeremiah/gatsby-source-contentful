@@ -74,9 +74,9 @@ const isImage = image =>
       `image/png`,
       `image/webp`,
       `image/gif`,
-      `image/svg`, // Experiment added by thisjeremiah
+      `image/svg+xml`, // Experiment added by thisjeremiah
     ],
-    _.get(image, `file.contentType`)
+    _.get(image, `file.contentType`),
   )
 
 const getBase64Image = (imgUrl, args = {}) => {
@@ -121,7 +121,7 @@ const createUrl = (imgUrl, options = {}) => {
       fit: options.resizingBehavior ? options.resizingBehavior : ``,
       f: options.cropFocus ? options.cropFocus : ``,
     },
-    _.identity
+    _.identity,
   )
   return `${imgUrl}?${qs.stringify(args)}`
 }
@@ -213,7 +213,7 @@ const resolveResponsiveResolution = (image, options) => {
           }),
           srcSet,
         })
-      }
+      },
     )
   })
 }
@@ -287,7 +287,7 @@ const resolveResponsiveSizes = (image, options) => {
           srcSet,
           sizes: options.sizes,
         })
-      }
+      },
     )
   })
 }
@@ -326,7 +326,7 @@ const resolveResize = (image, options) => {
           aspectRatio,
           base64: base64Str,
         })
-      }
+      },
     )
   })
 }
