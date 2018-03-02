@@ -222,8 +222,10 @@ exports.createContentTypeNodes = ({
 
               delete entryItemFields[entryItemFieldKey];
             }
-          } else if (entryItemFieldValue && entryItemFieldValue.sys && entryItemFieldValue.sys.type && entryItemFieldValue.sys.id && resolvable.has(entryItemFieldValue.sys.id)) {
-            entryItemFields[`${entryItemFieldKey}___NODE`] = mId(entryItemFieldValue.sys.id);
+          } else if (entryItemFieldValue && entryItemFieldValue.sys && entryItemFieldValue.sys.type && entryItemFieldValue.sys.id) {
+            if (resolvable.has(entryItemFieldValue.sys.id)) {
+              entryItemFields[`${entryItemFieldKey}___NODE`] = mId(entryItemFieldValue.sys.id);
+            }
             delete entryItemFields[entryItemFieldKey];
           }
         }
